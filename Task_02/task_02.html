@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer | Survival & Horror</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Jura:wght@300;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blood: '#7a1111',
+                        void: '#0a0a0c',
+                        rust: '#8c593b',
+                        ash: '#a3a3a3'
+                    },
+                    fontFamily: {
+                        title: ['Special Elite', 'cursive'],
+                        body: ['Jura', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #d4d4d4;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for gritty feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a1111;
+        }
+        /* Noise overlay for atmospheric effect */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+    </style>
+</head>
+<body class="font-body antialiased relative">
+    <div class="noise-overlay"></div>
+
+    <nav class="fixed w-full z-50 bg-void/90 backdrop-blur-sm border-b border-blood/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-title text-xl text-white tracking-widest uppercase hover:text-blood transition-colors">Void<span class="text-blood">Walker</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="text-ash hover:text-white px-3 py-2 text-sm uppercase tracking-widest transition-colors border-b-2 border-transparent hover:border-blood">Entity</a>
+                        <a href="#skills" class="text-ash hover:text-white px-3 py-2 text-sm uppercase tracking-widest transition-colors border-b-2 border-transparent hover:border-blood">Abilities</a>
+                        <a href="#projects" class="text-ash hover:text-white px-3 py-2 text-sm uppercase tracking-widest transition-colors border-b-2 border-transparent hover:border-blood">Nightmares</a>
+                        <a href="#contact" class="text-ash hover:text-white px-3 py-2 text-sm uppercase tracking-widest transition-colors border-b-2 border-transparent hover:border-blood">Summon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-void/80 to-void z-10"></div>
+            <!-- Dark, moody placeholder background -->
+            <img src="https://placehold.co/1920x1080/050505/111111?text=+" alt="Dark Forest Background" class="w-full h-full object-cover opacity-60 mix-blend-luminosity">
+        </div>
+        
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h1 class="font-title text-5xl md:text-7xl text-white mb-6 tracking-tighter drop-shadow-[0_0_15px_rgba(122,17,17,0.5)]">
+                Crafting <span class="text-blood">Fear.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-ash mb-10 font-light tracking-wide max-w-2xl mx-auto">
+                Unity Game Developer specializing in atmospheric horror and survival mechanics.
+            </p>
+            <a href="#projects" class="inline-block px-8 py-4 bg-transparent border border-blood text-blood font-title uppercase tracking-widest hover:bg-blood hover:text-white transition-all duration-300 shadow-[0_0_10px_rgba(122,17,17,0.2)] hover:shadow-[0_0_20px_rgba(122,17,17,0.6)]">
+                Enter the Dark
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-void relative border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blood to-void blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <img src="https://placehold.co/600x800/111/333?text=Developer+Silhouette" alt="Developer Silhouette" class="relative w-full h-auto object-cover grayscale opacity-80 border border-white/10">
+                </div>
+                <div>
+                    <h2 class="font-title text-4xl text-white mb-2 uppercase tracking-wider">The Architect</h2>
+                    <div class="h-0.5 w-24 bg-blood mb-8"></div>
+                    <p class="text-lg text-ash mb-6 leading-relaxed">
+                        I am a Unity Game Developer with <strong class="text-white">2 years of relentless experience</strong> forging digital nightmares. My passion lies not in the light, but in the shadows—narrative-driven horror and brutal survival games are my domain.
+                    </p>
+                    <p class="text-lg text-ash leading-relaxed mb-8">
+                        I believe true terror comes from what you cannot see, and true survival is earned through struggle. I dedicate my craft to building immersive environments, unsettling lore, and mechanics that make players question their safety at every turn.
+                    </p>
+                    <div class="flex items-center space-x-4 text-sm font-title text-blood">
+                        <span>Status: <span class="text-white">Seeking new projects</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-[#0d0d12] relative border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-title text-4xl text-white mb-2 uppercase tracking-wider">Arsenal</h2>
+                <div class="h-0.5 w-24 bg-blood mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Unity 3D</h3>
+                    <p class="text-sm text-ash mt-2">Core Engine</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">C# Scripting</h3>
+                    <p class="text-sm text-ash mt-2">Logic & Mechanics</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Terrain Gen</h3>
+                    <p class="text-sm text-ash mt-2">Procedural Worlds</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Env Storytelling</h3>
+                    <p class="text-sm text-ash mt-2">Atmosphere</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">AI Behaviors</h3>
+                    <p class="text-sm text-ash mt-2">Enemy Logic</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Lighting</h3>
+                    <p class="text-sm text-ash mt-2">Shadows & Mood</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Audio Design</h3>
+                    <p class="text-sm text-ash mt-2">Tension Building</p>
+                </div>
+                <div class="bg-void border border-white/10 p-6 text-center hover:border-blood/50 transition-colors duration-300 group">
+                    <h3 class="font-title text-xl text-white group-hover:text-blood transition-colors">Optimization</h3>
+                    <p class="text-sm text-ash mt-2">Performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-void relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-title text-4xl text-white mb-2 uppercase tracking-wider">Archived Nightmares</h2>
+                <div class="h-0.5 w-24 bg-blood mx-auto"></div>
+                <p class="text-ash mt-4 max-w-2xl mx-auto">Fragments of worlds built on fear, survival, and the unknown.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-[#0a0a0c] border border-white/10 overflow-hidden hover:border-blood/60 transition duration-500 group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-blood/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <img src="https://placehold.co/600x400/1a1a1a/444444?text=Abandoned+Island" alt="Abandoned Island" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="font-title text-2xl text-white mb-3">Isle of the Parasite</h3>
+                        <p class="text-ash text-sm mb-6 flex-grow leading-relaxed">
+                            A survival horror experience set on a desolate, fog-drenched island. Play as an investigative journalist uncovering deep, grotesque parasitic lore. Features inventory management, limited resources, and sanity mechanics.
+                        </p>
+                        <div class="text-xs text-blood font-mono uppercase tracking-widest">Unity / C# / Narrative Design</div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-[#0a0a0c] border border-white/10 overflow-hidden hover:border-blood/60 transition duration-500 group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <img src="https://placehold.co/600x400/0f1a12/333333?text=Nature+Survival" alt="Nature Survival" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="font-title text-2xl text-white mb-3">Savage Canopy</h3>
+                        <p class="text-ash text-sm mb-6 flex-grow leading-relaxed">
+                            A brutal nature survival game. Focused heavily on detailed procedural terrain generation, creating towering mountains and dense, oppressive forests. Players must brave dynamic weather, craft shelters, and outlast the elements.
+                        </p>
+                        <div class="text-xs text-blood font-mono uppercase tracking-widest">Terrain Gen / Systems / Survival</div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-[#0a0a0c] border border-white/10 overflow-hidden hover:border-blood/60 transition duration-500 group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <img src="https://placehold.co/600x400/100a14/333333?text=Alien+Horror" alt="Alien Horror" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="font-title text-2xl text-white mb-3">Xeno-Phobia</h3>
+                        <p class="text-ash text-sm mb-6 flex-grow leading-relaxed">
+                            A sci-fi horror prototype focusing on terrifying alien creature designs and advanced evasion mechanics. The AI utilizes sight and sound detection, forcing the player to rely on shadows and distraction to survive.
+                        </p>
+                        <div class="text-xs text-blood font-mono uppercase tracking-widest">AI / Animation / Evasion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#050508] border-t border-white/5 relative">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <h3 class="font-title text-2xl text-white mb-6 uppercase tracking-wider border-l-4 border-blood pl-4">System Access // Logic Fragment</h3>
+            <div class="bg-void p-4 rounded border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.8)] overflow-x-auto relative">
+                <!-- Glitch effect decoration -->
+                <div class="absolute top-0 right-0 p-2 text-xs text-blood font-mono opacity-50">.cpp_core_module</div>
+                <pre class="text-sm font-mono text-gray-400 leading-relaxed">
+<span class="text-green-600">#include &lt;iostream&gt;</span>
+<span class="text-green-600">#include &lt;cmath&gt;</span>
+
+<span class="text-blue-400">using</span> <span class="text-blue-400">namespace</span> std; <span class="text-gray-600">// Engine override requirement</span>
+
+<span class="text-blue-400">class</span> <span class="text-yellow-200">HorrorEntity</span> {
+<span class="text-blue-400">private:</span>
+    <span class="text-blue-400">float</span> detectionRadius = <span class="text-purple-400">15.0f</span>;
+    <span class="text-blue-400">bool</span> isHunting = <span class="text-purple-400">false</span>;
+
+<span class="text-blue-400">public:</span>
+    <span class="text-blue-400">void</span> <span class="text-yellow-100">EvaluatePlayerProximity</span>(<span class="text-blue-400">float</span> distanceToPlayer, <span class="text-blue-400">float</span> playerNoiseLevel) {
+        <span class="text-gray-600">// If player makes noise within radius, trigger hunt</span>
+        <span class="text-pink-500">if</span> (distanceToPlayer <= detectionRadius && playerNoiseLevel > <span class="text-purple-400">0.5f</span>) {
+            isHunting = <span class="text-purple-400">true</span>;
+            <span class="text-yellow-100">TriggerChaseMusic</span>();
+            cout << <span class="text-green-400">"Entity has detected prey."</span> << endl;
+        } <span class="text-pink-500">else</span> {
+            isHunting = <span class="text-purple-400">false</span>;
+            <span class="text-yellow-100">ResumePatrol</span>();
+        }
+    }
+    
+    <span class="text-blue-400">void</span> <span class="text-yellow-100">TriggerChaseMusic</span>() { <span class="text-gray-600">/* FMOD audio trigger */</span> }
+    <span class="text-blue-400">void</span> <span class="text-yellow-100">ResumePatrol</span>() { <span class="text-gray-600">/* NavMesh logic */</span> }
+};
+</pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-[#0d0d12] relative border-t-2 border-blood">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="font-title text-4xl text-white mb-4 uppercase tracking-wider">Make Contact</h2>
+            <p class="text-ash mb-10 font-mono text-sm uppercase tracking-widest">Are you brave enough to collaborate?</p>
+            
+            <form class="space-y-6 text-left">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-ash mb-2 font-mono">Designation (Name)</label>
+                    <input type="text" id="name" class="w-full bg-void border border-white/20 rounded-none px-4 py-3 text-white focus:outline-none focus:border-blood transition-colors" placeholder="Enter your name...">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-ash mb-2 font-mono">Transmission Vector (Email)</label>
+                    <input type="email" id="email" class="w-full bg-void border border-white/20 rounded-none px-4 py-3 text-white focus:outline-none focus:border-blood transition-colors" placeholder="Enter your email...">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-ash mb-2 font-mono">The Message</label>
+                    <textarea id="message" rows="5" class="w-full bg-void border border-white/20 rounded-none px-4 py-3 text-white focus:outline-none focus:border-blood transition-colors resize-none" placeholder="Speak your mind..."></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button type="button" class="px-10 py-4 bg-void border border-blood text-blood font-title uppercase tracking-widest hover:bg-blood hover:text-white transition-all duration-300 w-full md:w-auto">
+                        Transmit Data
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-white/5 text-center">
+        <p class="text-ash/50 text-xs font-mono uppercase tracking-widest">
+            &copy; 2026 VoidWalker. All nightmares reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
